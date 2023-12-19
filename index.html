@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>BEST MEAL</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <a href="#">
+                <img id="logo" src="logo.png" alt="">
+            </a>
+           
+           
+        </nav>
+    </header>
+    <div id="title-message" class="flex-container show-message">
+        <p>Best Meal</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati laboriosam quidem ipsa rerum porro at nemo, doloremque eligendi quaerat accusantium.</p>
+        <form action="">
+            <input id="search-bar" placeholder="Search by category" type="text">
+        </form>
+    </div>
+    <h1 id="random-meal-title">Today's Random Meal</h1>
+    <div id="random-meal-container">
+        <div class="flex-container" id="random-meal">
+            <img id="meal-thumbnail" src="" alt="">
+            <div id="meal-details">
+                <h1 id="meal-name"></h1>
+                <ul id="meal-ing"></ul>
+            </div>
+            <p id="modalBtn">Read more</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h1 id="search-title">Search Results for <span id="category-name"></span></h1>
+    <div class="grid-container" id="search-result"></div>
+
+    <div id="modal" class="flex-container pop-up">
+        <img id="closeBtn" src="cross.png" alt="">
+        <img id="image" src="" alt="">
+        <div id="modal-details">
+            <h1 id="meal-name"></h1>
+            <h3>Ingredients</h3>
+            <ul id="allingredients">
+            </ul>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script src="app.js"></script>
