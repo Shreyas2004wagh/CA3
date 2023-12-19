@@ -1,9 +1,7 @@
 * {
-    background-color: black;
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    color: white;
 }
 
 /* Navbar */
@@ -24,13 +22,11 @@ header {
     font-size: 2.5rem;
     font-weight: bold;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    background-color: red;
 }
 
 #logo {
     padding-top: 10px;
     height: 80px;
-    background-color: azure;
 }
 
 .flex-container {
@@ -40,14 +36,13 @@ header {
 
 #title-message {
     padding: 20px;
-    background-color: white;
+    background-color: whi;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
     width: 100%;
     height: 50vh;
-    background-color: black;
 }
 
 
@@ -78,7 +73,6 @@ header {
 
 form {
     position: relative;
-    background-color: red;
 }
 
 #search-icon {
@@ -100,6 +94,11 @@ form {
     border-radius: 20px;
     width: fit-content;
     padding: 20px;
+}
+
+#random-meal-container:hover {
+    cursor: pointer;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 
 #random-meal-title{
@@ -200,7 +199,7 @@ form {
     display: none;
 }
 
-#image {
+#modal-thumbnail {
     width: 45%;
     border-radius: 20px 0px 0px 20px;
 }
@@ -315,7 +314,7 @@ li img {
         height: 70%;
     }
     
-    #image {
+    #modal-thumbnail {
         width: 100%;
         height: 40%;
         border-radius: 10px 10px 0px 0px;

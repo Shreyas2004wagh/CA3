@@ -1,7 +1,7 @@
 
 //for random meal
+let mealName = document.querySelectorAll("#random-meal #meal-name");
 
-let mealName = document.querySelectorAll("#meal-name")
 let mealThumbnail = document.querySelector("#meal-thumbnail")
 let mealIng = document.getElementById("meal-ing")
 
@@ -92,10 +92,10 @@ function appendRandomMeal(data) {
 // call the function when user searches
 
 form.addEventListener("submit", (event) => {
-    getResults()
+    event.preventDefault();
+    getResults();
+});
 
-    return false;
-})
 
 
 
