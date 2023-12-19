@@ -5,9 +5,8 @@ let mealName = document.querySelectorAll("#meal-name")
 let mealThumbnail = document.querySelector("#meal-thumbnail")
 let mealIng = document.getElementById("meal-ing")
 
-// for navbar and search results
+let form = document.querySelector("form");
 
-let form = document.getElementsByTagName("form")[0]
 let searchResult = document.getElementById("search-result")
 let searchBar = document.getElementById("search-bar")
 let searchTitle = document.getElementById("search-title")
@@ -19,7 +18,8 @@ let modal = document.getElementById("modal")
 let allIng = document.getElementById("allingredients")
 let closeBtn = document.getElementById("closeBtn")
 let modalBtn = document.getElementById("modalBtn")
-let body = document.getElementsByTagName("body")[0]
+
+let body = document.body;
 let modalThumbnail = document.getElementById("image")
 
 //open modal
@@ -66,11 +66,13 @@ function appendRandomMeal(data) {
             li.innerText = `${meal[ingredient]},${meal[measure]}`
             mealIng.append(li)
         } else{
-            break // to stop when there are no more ingredients
+            break 
         }
     }
-
-    mealIng.lastChild.innerText += "..." // to show there are more ingredients
+    if (mealIng.children.length > 5) {
+        mealIng.lastChild.innerText += "...";
+    }
+    
 
     for(let i = 1;i <= 20;i++) {
         const ingredient = `strIngredient${i}`
@@ -100,10 +102,10 @@ form.addEventListener("submit", (event) => {
 function getResults() {
     
     searchResult.innerHTML = "" // to refresh search content
-    const searchItem = searchBar.value
+    let value = searchBar.value
     searchTitle.style.visibility = "visible"
     
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${searchItem}`)
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${value}`)
     .then((res) => res.json())
     .then((data) => {
         console.log(data)
