@@ -222,7 +222,13 @@ li img {
     height: 50px;
     cursor: pointer;
 }
-
+footer {
+    background-color: black;
+    color: white; 
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
 
 @media (max-width:600px) {
 
