@@ -1,64 +1,49 @@
-
-//for random meal
+// DOM elements for random meal section
 let mealName = document.querySelectorAll("#random-meal #meal-name");
-
-let mealThumbnail = document.querySelector("#meal-thumbnail")
-let mealIng = document.getElementById("meal-ing")
-
+let mealThumbnail = document.querySelector("#meal-thumbnail");
+let mealIng = document.getElementById("meal-ing");
+// Form and search elements
 let form = document.querySelector("form");
+let searchResult = document.getElementById("search-result");
+let searchBar = document.getElementById("search-bar");
+let searchTitle = document.getElementById("search-title");
+// Modal elements
+let modal = document.getElementById("modal");
+let allIng = document.getElementById("allingredients");
+let closeBtn = document.getElementById("closeBtn");
+let modalBtn = document.getElementById("modalBtn");
+let modalThumbnail = document.getElementById("image");
+// Event listeners for modal
+modalBtn.addEventListener("click", toggleModal);
+closeBtn.addEventListener("click", toggleModal);
 
-let searchResult = document.getElementById("search-result")
-let searchBar = document.getElementById("search-bar")
-let searchTitle = document.getElementById("search-title")
-let message = document.getElementById("title-message")
+function toggleModal() {
+    modal.classList.toggle("pop-up");
+}
 
-//for modal
-
-let modal = document.getElementById("modal")
-let allIng = document.getElementById("allingredients")
-let closeBtn = document.getElementById("closeBtn")
-let modalBtn = document.getElementById("modalBtn")
-
-let body = document.body;
-let modalThumbnail = document.getElementById("image")
-
-//open modal
-
-modalBtn.addEventListener("click", () => {
-    modal.classList.toggle("pop-up")
-    
-})
-
-//close modal
-
-closeBtn.addEventListener("click", () => {
-    modal.classList.toggle("pop-up")
-})
-
+// Fetch and display a random meal on page load
 function getRandomMeal() {
     fetch("https://www.themealdb.com/api/json/v1/1/random.php")
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
-            appendRandomMeal(data) //to append the received data
+            appendRandomMeal(data) 
         })
         .catch((err) => console.log(err))
 }
 
 getRandomMeal()
-
+// Display details of a random meal
 function appendRandomMeal(data) {
-
     const meal = data.meals[0]
-
     mealName.forEach((name) => {
         name.innerHTML = meal.strMeal
     })
 
     mealThumbnail.src = meal.strMealThumb
     modalThumbnail.src = meal.strMealThumb
-    
-    for(let i = 1;i <= 5;i++){
+    const maxDisplayedIngredients = 2;
+    for(let i = 1;i <= maxDisplayedIngredients;i++){
         const ingredient = `strIngredient${i}`
         const measure = `strMeasure${i}`
         if (meal[ingredient] && meal[measure]){
@@ -69,7 +54,7 @@ function appendRandomMeal(data) {
             break 
         }
     }
-    if (mealIng.children.length > 5) {
+    if (mealIng.children.length > 2) {
         mealIng.lastChild.innerText += "...";
     }
     
@@ -84,24 +69,16 @@ function appendRandomMeal(data) {
         } else{
             break
         }
-    }
-    
+    } 
 }
-
-
-// call the function when user searches
-
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     getResults();
 });
-
-
-
-
+// Fetch and display search results based on user input
 function getResults() {
     
-    searchResult.innerHTML = "" // to refresh search content
+    searchResult.innerHTML = ""
     let value = searchBar.value
     searchTitle.style.visibility = "visible"
     
@@ -116,18 +93,15 @@ function getResults() {
     const categoryName = document.getElementById("category-name")
     categoryName.innerText = searchBar.value
 }
-
-
+// Display search results in the DOM
 function appendSearchResults(data) {
     if(data.meals !== null){  
         const meals = data.meals
         meals.forEach(meal => {
             searchResult.innerHTML  += `<div class="recipe">
-            <img class="recipe-thumb" src=${meal.strMealThumb} alt="">
+            <img class="recipe-thumb" src=${meal.strMealThumb}>
             <p>${meal.strMeal}</p>
         </div>`
         })
-    } else { 
-        searchResult.innerHTML += `<p id=no-result>Nothing found<p>`
     }
 }

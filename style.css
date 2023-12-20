@@ -218,16 +218,6 @@ h3 {
     padding: 20px;
 }
 
-
-
-
-
-hr {
-    margin: 0px 100px;
-}
-
-
-
 li img {
     height: 50px;
     cursor: pointer;
@@ -240,7 +230,11 @@ li img {
         width: 100%;
     }
 
-
+    #random-meal-title {
+        margin: 25px;
+        text-align: center;
+        font-size: 2rem;
+    }
 
     #title-message {
         padding: 0px;
@@ -251,12 +245,6 @@ li img {
  
     #title-message p{
         font-size: 20px;
-    }
-
-    #random-meal-title {
-        margin: 25px;
-        text-align: center;
-        font-size: 2rem;
     }
 
     #random-meal-container {
@@ -309,7 +297,4 @@ li img {
         right: 10px;
     }
 
-    hr {
-        display: none;
-    }
 }
